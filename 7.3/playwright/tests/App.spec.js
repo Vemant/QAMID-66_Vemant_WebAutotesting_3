@@ -20,3 +20,27 @@ test("test", async ({ page }) => {
     "https://netology.ru/programs/kak-perenesti-svoyo-delo-v-onlajn-bp"
   );
 });
+
+test("test", async ({ page }) => {
+  await page.goto("https://netology.ru/?modal=sign_in");
+  await page.getByPlaceholder("Email").click();
+  await page.getByPlaceholder("Email").fill(user.loginTrue);
+  await page.getByPlaceholder("Email").press("Tab");
+  await page.getByPlaceholder("Пароль").fill(user.passwordTrue);
+  await page.getByTestId("login-submit-btn").click();
+  await expect(page.getByClass("styles_title__QUu_b")).toHaveText([
+    "Направления обучения",
+  ]);
+});
+
+test("test", async ({ page }) => {
+  await page.goto("https://netology.ru/?modal=sign_in");
+  await page.getByPlaceholder("Email").click();
+  await page.getByPlaceholder("Email").fill("jkldfndfn@yandex.ru");
+  await page.getByPlaceholder("Email").press("Tab");
+  await page.getByPlaceholder("Пароль").fill("ldkbnlsdknbas");
+  await page.getByTestId("login-submit-btn").click();
+  await expect(page.getByTestId("login-error-hint")).toHaveText([
+    "Вы ввели неправильно логин или пароль",
+  ]);
+});

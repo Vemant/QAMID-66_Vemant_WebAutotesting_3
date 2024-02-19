@@ -7,6 +7,11 @@
     "test": "jest",
     "coverage": "jest --collectCoverage"
   },
+  "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**"
+    ],
   "coverageThreshold": {
     "global": {
       "branches": 100,
