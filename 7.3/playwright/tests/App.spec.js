@@ -1,4 +1,5 @@
 const { test, expect } = require("@playwright/test");
+<script src="user.js"></script>;
 
 test("test", async ({ page }) => {
   // Go to https://netology.ru/free/management#/
