@@ -6,4 +6,4 @@ node_modules/
 /playwright/.cache/
 example.spec.js
 user.js 
-/.vscode
+.vscode/
