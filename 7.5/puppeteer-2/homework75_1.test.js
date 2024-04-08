@@ -16,7 +16,7 @@ afterEach(() => {
 describe("qamidTmWeb tests task 1", () => {
   beforeEach(async () => {
     page = await browser.newPage();
-    await page.goto("https://qamid.tmweb.ru/client/hall.php");
+    await page.goto("https://qamid.tmweb.ru/client/index.php");
   });
 
   test("Should book 1 ticket", async () => {
