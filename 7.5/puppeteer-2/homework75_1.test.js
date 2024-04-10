@@ -21,10 +21,12 @@ describe("qamidTmWeb tests task 1", () => {
 
   test("Should book 1 ticket", async () => {
     // Выбор времени сеанса и клик
-    await clickElementXPath(
-      page,
-      "/html/body/main/section[1]/div[2]/ul/li[3]/a"
-    );
+    // await clickElementXPath(
+    //   page,
+    //   "/html/body/main/section[1]/div[2]/ul/li[3]/a"
+    // );
+    await clickElementXPath(page, "//*[@data-seance-start='1200']");
+
     // Выбор места в зале и клик
     await clickElementXPath(
       page,
@@ -43,10 +45,7 @@ describe("qamidTmWeb tests task 1", () => {
 
   test("Should book 2 tickets", async () => {
     // Выбор времени сеанса и клик
-    await clickElementXPath(
-      page,
-      "/html/body/main/section[1]/div[2]/ul/li[3]/a"
-    );
+    await clickElementXPath(page, "//*[@data-seance-start='1200']");
     // Выбор 1-го места в зале и клик
     await clickElementXPath(
       page,
@@ -70,10 +69,7 @@ describe("qamidTmWeb tests task 1", () => {
 
   test("Should try to book already booked ticket", async () => {
     // Выбор времени сеанса и клик
-    await clickElementXPath(
-      page,
-      "/html/body/main/section[1]/div[2]/ul/li[3]/a"
-    );
+    await clickElementXPath(page, "//*[@data-seance-start='1200']");
     // Выбор места в зале и клик
     await clickElementXPath(
       page,

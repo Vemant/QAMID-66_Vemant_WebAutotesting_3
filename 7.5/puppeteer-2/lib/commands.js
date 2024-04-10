@@ -7,14 +7,6 @@ module.exports = {
       throw new Error(`Selector is not clickable: ${selector}`);
     }
   },
-  // clickElementXPath: async function (page, xPath) {
-  //   try {
-  //     const elementXPath = page.$x(xPath);
-  //     await elementXPath.click();
-  //   } catch (error) {
-  //     throw new Error(`XPath is not clickable: ${xPath}`);
-  //   }
-  // },
   clickElementXPath: async function (page, xPath) {
     try {
       await page.waitForXPath(xPath);
@@ -33,14 +25,6 @@ module.exports = {
       throw new Error(`Text is not available for selector: ${selector}`);
     }
   },
-  // getTextXPath: async function (page, xPath) {
-  //   try {
-  //     const elementXPath = page.$x(xPath);
-  //     await elementXPath.$eval(xPath, (link) => link.textContent);
-  //   } catch (error) {
-  //     throw new Error(`Text is not available for selector: ${xPath}`);
-  //   }
-  // },
   getTextXPath: async function (page, xPath) {
     try {
       await page.waitForXPath(xPath);
