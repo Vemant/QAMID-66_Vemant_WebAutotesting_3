@@ -12,7 +12,6 @@ afterEach(() => {
   page.close();
 });
 
-// ЗАДАНИЕ 1
 describe("qamidTmWeb tests task 1", () => {
   beforeEach(async () => {
     page = await browser.newPage();
@@ -20,63 +19,64 @@ describe("qamidTmWeb tests task 1", () => {
   });
 
   test("Should book 1 ticket", async () => {
+    // Выбор дня и клик
+    await clickElementXPath(page, "//*[@data-time-stamp='1713387600']");
     // Выбор времени сеанса и клик
-    // await clickElementXPath(
-    //   page,
-    //   "/html/body/main/section[1]/div[2]/ul/li[3]/a"
-    // );
-    await clickElementXPath(page, "//*[@data-seance-start='1200']");
-
+    await clickElementXPath(page, "//*[@data-seance-start='600']");
     // Выбор места в зале и клик
     await clickElementXPath(
       page,
-      "/html/body/main/section/div[2]/div[1]/div[8]/span[4]"
+      "/html/body/main/section/div[2]/div[1]/div[3]/span[1]"
     );
     // Клик кнопки "Забронировать"
-    await clickElementXPath(page, "/html/body/main/section/button");
+    await clickElementXPath(page, "//*[@class='acceptin-button']");
     // Проверка наличия на странице нужного текста
     const actual = await getTextXPath(
       page,
-      "/html/body/main/section/header/h2"
+      "//*[@class='ticket__check-title']"
     );
     const expected = "Вы выбрали билеты:";
-    expect(actual).toContain(expected);
+    expect(actual).toContain(expected, { timeout: 180000 });
   });
 
   test("Should book 2 tickets", async () => {
+    // Выбор дня и клик
+    await clickElementXPath(page, "//*[@data-time-stamp='1713387600']");
     // Выбор времени сеанса и клик
-    await clickElementXPath(page, "//*[@data-seance-start='1200']");
+    await clickElementXPath(page, "//*[@data-seance-start='600']");
     // Выбор 1-го места в зале и клик
     await clickElementXPath(
       page,
-      "/html/body/main/section/div[2]/div[1]/div[1]/span[1]"
+      "/html/body/main/section/div[2]/div[1]/div[3]/span[1]"
     );
     // Выбор 2-го места в зале и клик
     await clickElementXPath(
       page,
-      "/html/body/main/section/div[2]/div[1]/div[1]/span[2]"
+      "/html/body/main/section/div[2]/div[1]/div[3]/span[2]"
     );
     // Клик кнопки "Забронировать"
-    await clickElementXPath(page, "/html/body/main/section/button");
+    await clickElementXPath(page, "//*[@class='acceptin-button']");
     // Проверка наличия на странице нужного текста
     const actual = await getTextXPath(
       page,
-      "/html/body/main/section/header/h2"
+      "//*[@class='ticket__check-title']"
     );
     const expected = "Вы выбрали билеты:";
-    expect(actual).toContain(expected);
+    expect(actual).toContain(expected, { timeout: 180000 });
   });
 
   test("Should try to book already booked ticket", async () => {
+    // Выбор дня и клик
+    await clickElementXPath(page, "//*[@data-time-stamp='1713387600']");
     // Выбор времени сеанса и клик
-    await clickElementXPath(page, "//*[@data-seance-start='1200']");
+    await clickElementXPath(page, "//*[@data-seance-start='660']");
     // Выбор места в зале и клик
     await clickElementXPath(
       page,
-      "/html/body/main/section/div[2]/div[1]/div[5]/span[8]"
+      "/html/body/main/section/div[2]/div[1]/div[2]/span[8]"
     );
     // Клик кнопки "Забронировать"; проверка выпадения исключения
-    await clickElementXPath(page, "/html/body/main/section/button");
+    await clickElementXPath(page, "//*[@class='acceptin-button']");
     await expect(clickElementXPath()).rejects.toThrow(Error);
   });
 });
