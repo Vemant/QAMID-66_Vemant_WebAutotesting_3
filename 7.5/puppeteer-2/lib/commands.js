@@ -27,9 +27,10 @@ module.exports = {
   },
   getTextXPath: async function (page, xPath) {
     try {
-      await page.waitForXPath(xPath);
-      const elementXPath = await page.$x(xPath);
-      return await page.evaluate((link) => link.textContent, elementXPath);
+      const elementXPath = await page.waitForXPath(xPath);
+      return await elementXPath.evaluate(
+        (elementXPath) => elementXPath.textContent
+      );
     } catch (error) {
       throw new Error(`Text is not available for xpath: ${xPath}`);
     }

@@ -16,17 +16,17 @@ describe("qamidTmWeb tests task 1", () => {
   beforeEach(async () => {
     page = await browser.newPage();
     await page.goto("https://qamid.tmweb.ru/client/index.php");
+    // Выбор дня и клик
+    await clickElementXPath(page, "/html/body/nav/a[2]");
   });
 
   test("Should book 1 ticket", async () => {
-    // Выбор дня и клик
-    await clickElementXPath(page, "//*[@data-time-stamp='1713387600']");
     // Выбор времени сеанса и клик
     await clickElementXPath(page, "//*[@data-seance-start='600']");
     // Выбор места в зале и клик
     await clickElementXPath(
       page,
-      "/html/body/main/section/div[2]/div[1]/div[3]/span[1]"
+      "/html/body/main/section/div[2]/div[1]/div[4]/span[1]"
     );
     // Клик кнопки "Забронировать"
     await clickElementXPath(page, "//*[@class='acceptin-button']");
@@ -40,19 +40,17 @@ describe("qamidTmWeb tests task 1", () => {
   });
 
   test("Should book 2 tickets", async () => {
-    // Выбор дня и клик
-    await clickElementXPath(page, "//*[@data-time-stamp='1713387600']");
     // Выбор времени сеанса и клик
     await clickElementXPath(page, "//*[@data-seance-start='600']");
     // Выбор 1-го места в зале и клик
     await clickElementXPath(
       page,
-      "/html/body/main/section/div[2]/div[1]/div[3]/span[1]"
+      "/html/body/main/section/div[2]/div[1]/div[4]/span[1]"
     );
     // Выбор 2-го места в зале и клик
     await clickElementXPath(
       page,
-      "/html/body/main/section/div[2]/div[1]/div[3]/span[2]"
+      "/html/body/main/section/div[2]/div[1]/div[4]/span[2]"
     );
     // Клик кнопки "Забронировать"
     await clickElementXPath(page, "//*[@class='acceptin-button']");
@@ -66,14 +64,12 @@ describe("qamidTmWeb tests task 1", () => {
   });
 
   test("Should try to book already booked ticket", async () => {
-    // Выбор дня и клик
-    await clickElementXPath(page, "//*[@data-time-stamp='1713387600']");
     // Выбор времени сеанса и клик
     await clickElementXPath(page, "//*[@data-seance-start='660']");
     // Выбор места в зале и клик
     await clickElementXPath(
       page,
-      "/html/body/main/section/div[2]/div[1]/div[2]/span[8]"
+      "/html/body/main/section/div[2]/div[1]/div[7]/span[8]"
     );
     // Клик кнопки "Забронировать"; проверка выпадения исключения
     await clickElementXPath(page, "//*[@class='acceptin-button']");
